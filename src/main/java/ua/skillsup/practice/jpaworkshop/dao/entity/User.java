@@ -1,14 +1,27 @@
 package ua.skillsup.practice.jpaworkshop.dao.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "AUCTION_CLIENT")
 public class User {
 
+	@Id
+	@Column(name = "ID")
 	private Long id;
+	@Column(name = "LOGIN")
 	private String login;
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "LAST_NAME")
 	private String lastName;
+	@Column(name = "DELIVERY_ADDRESS")
 	private String deliveryAddress;
+	@Column(name = "CONTACT_PHONE")
 	private String contactPhone;
 
 	public Long getId() {
