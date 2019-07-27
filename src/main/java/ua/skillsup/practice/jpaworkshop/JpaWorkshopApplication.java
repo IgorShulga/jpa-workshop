@@ -24,7 +24,7 @@ public class JpaWorkshopApplication {
 		ItemRepository itemRepository = context.getBean(ItemRepository.class);
 		UserRepository userRepository = context.getBean(UserRepository.class);
 		LotRepository lotRepository = context.getBean(LotRepository.class);
-		System.out.println(lotRepository.findAll().size());
+//		System.out.println(lotRepository.findAll().size());
 
 
 //		System.out.println(itemRepository.findAll());
@@ -39,8 +39,11 @@ public class JpaWorkshopApplication {
 //				LocalDate.now().minusDays(5),
 //				LocalDate.now().plusDays(1)));
 
+//		AuctionService service = context.getBean(AuctionService.class);
+//		System.out.println(service.createLot("Loki", "Dinning table", BigDecimal.valueOf(555), 10));
+//		System.out.println(lotRepository.findAll().size());
+
 		AuctionService service = context.getBean(AuctionService.class);
-		System.out.println(service.createLot("Loki", "Dinning table", BigDecimal.valueOf(555), 10));
-		System.out.println(lotRepository.findAll().size());
+		System.out.println(service.getItemByCategory("Digital"));
 	}
 }

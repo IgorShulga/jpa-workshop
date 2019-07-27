@@ -1,9 +1,13 @@
 package ua.skillsup.practice.jpaworkshop.dao.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Category {
 
+	@Id
 	private Long id;
 	private String title;
 	private String description;

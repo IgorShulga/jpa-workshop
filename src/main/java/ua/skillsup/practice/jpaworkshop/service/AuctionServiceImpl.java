@@ -70,4 +70,11 @@ public class AuctionServiceImpl implements AuctionService {
     public List<LotHistory> getLotHistory(long lotId) {
         return null;
     }
+
+    @Override
+    public List<Item> getItemByCategory(String category) {
+        return itemRepository.findByCategory(category);
+    }
+
+
 }

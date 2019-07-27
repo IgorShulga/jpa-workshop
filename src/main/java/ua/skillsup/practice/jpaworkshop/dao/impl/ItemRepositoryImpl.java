@@ -56,4 +56,13 @@ public class ItemRepositoryImpl implements ItemRepository {
         query.where(criteriaBuilder.greaterThan(root.get("weight"), weight));
         return entityManager.createQuery(query).getResultList();
     }
+
+    @Override
+    public List<Item> findByCategory(String category) {
+        return entityManager.createQuery("select i from Item i " +
+                "JOIN i.categories c " +
+                "where c.title=:title ", Item.class)
+                .setParameter("title", category)
+                .getResultList();
+    }
 }

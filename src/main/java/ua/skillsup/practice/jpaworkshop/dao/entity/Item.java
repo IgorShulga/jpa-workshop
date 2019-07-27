@@ -1,10 +1,8 @@
 package ua.skillsup.practice.jpaworkshop.dao.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="ITEM")
@@ -24,6 +22,13 @@ public class Item {
 	@Column(name = "WEIGHT")
 	private Double weight;
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "ITEM_CATEGORY",
+			joinColumns = {@JoinColumn(name = "ITEM_ID")},
+			inverseJoinColumns = {@JoinColumn(name = "CATEGORY_ID")}
+	)
+	private Set<Category> categories;
 	public Long getId() {
 		return id;
 	}
@@ -70,6 +75,14 @@ public class Item {
 
 	public void setWeight(Double weight) {
 		this.weight = weight;
+	}
+
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
 	}
 
 	@Override
