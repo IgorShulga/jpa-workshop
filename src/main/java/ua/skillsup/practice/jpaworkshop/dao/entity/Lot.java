@@ -1,18 +1,35 @@
 package ua.skillsup.practice.jpaworkshop.dao.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class Lot {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ITEM_ID")
 	private Item item;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OWNER_ID")
 	private User owner;
-	private LocalDate datePlaced;
+
+	@Column(name = "LAST_UPDATE")
+	private LocalDate lastUpdate;
+	@Column(name = "START_PRICE")
 	private BigDecimal startPrice;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "BUYER_ID")
 	private User buyer;
+	@Column(name = "CURRENT_PRICE")
 	private BigDecimal currentPrice;
+	@Column(name = "DATE_END")
 	private LocalDate dateEnd;
 
 	public Long getId() {
@@ -39,12 +56,12 @@ public class Lot {
 		this.owner = owner;
 	}
 
-	public LocalDate getDatePlaced() {
-		return datePlaced;
+	public LocalDate getLastUpdate() {
+		return lastUpdate;
 	}
 
-	public void setDatePlaced(LocalDate datePlaced) {
-		this.datePlaced = datePlaced;
+	public void setLastUpdate(LocalDate lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 
 	public BigDecimal getStartPrice() {
@@ -98,7 +115,7 @@ public class Lot {
 				"id=" + id +
 				", item=" + item +
 				", owner=" + owner +
-				", datePlaced=" + datePlaced +
+				", lastUpdate=" + lastUpdate +
 				", startPrice=" + startPrice +
 				", buyer=" + buyer +
 				", currentPrice=" + currentPrice +

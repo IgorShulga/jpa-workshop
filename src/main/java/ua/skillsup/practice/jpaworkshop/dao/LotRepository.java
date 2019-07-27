@@ -2,6 +2,7 @@ package ua.skillsup.practice.jpaworkshop.dao;
 
 import ua.skillsup.practice.jpaworkshop.dao.entity.Lot;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface LotRepository {
@@ -10,6 +11,6 @@ public interface LotRepository {
 	void update(Lot lot);
 	Lot getOne(long id);
 	List<Lot> findAll();
-	//	List<Lot> findByFilter(LotFilter filter);
+	List<Lot> findByUserNameAndUpdateDate(String username, LocalDate from, LocalDate to);
 
 }

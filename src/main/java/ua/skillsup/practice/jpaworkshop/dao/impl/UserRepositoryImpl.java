@@ -38,6 +38,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByLogin(String login) {
-        return null;
+        return entityManager.createQuery("from User where login = :login", User.class)
+                .setParameter("login", login)
+                .getSingleResult();
     }
 }
