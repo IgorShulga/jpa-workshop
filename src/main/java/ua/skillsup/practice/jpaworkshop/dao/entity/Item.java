@@ -1,14 +1,27 @@
 package ua.skillsup.practice.jpaworkshop.dao.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name="ITEM")
 public class Item {
 
+	@Id
+	@Column(name = "ID")
 	private Long id;
+	@Column(name = "TITLE", nullable = false)
 	private String title;
+	@Column(name="DESCRIPTION", nullable = false)
 	private String description;
+	@Column(name = "WIDTH")
 	private Double width;
+	@Column(name = "HEIGHT")
 	private Double height;
+	@Column(name = "WEIGHT")
 	private Double weight;
 
 	public Long getId() {
